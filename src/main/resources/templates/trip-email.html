@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; color: #333; }
+        .container { padding: 20px; background: white; border: 1px solid #ccc; border-radius: 5px; width: 80%; margin: auto; }
+        h2 { color: #333; text-align: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 20px; }
+        .trip-info { margin-bottom: 15px; }
+        .trip-info p { margin: 5px 0; font-size: 16px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header img { width: 100px; }
+        .item-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .item-row strong { flex: 1;   color: #500050;}
+        .item-row span { flex: 1; text-align: right; }
+        .total { text-align: right; margin-top: 10px; font-weight: bold; }
+        footer { text-align: center; margin-top: 20px; font-size: 14px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://i.imgur.com/tz3NioM.png" alt="Company Logo">
+        <h2>RideTribe - Trip Details Invoice</h2>
+    </div>
+    <div class="trip-info">
+        <div class="item-row"><strong>Trip ID:</strong><span th:text="'&nbsp;' + ${tripId} "></span></div>
+        <div class="item-row"><strong>Customer Name:</strong><span th:text="'&nbsp; ' +  ${cName}"></span></div>
+        <div class="item-row"><strong>Customer Email:</strong><span th:text="'&nbsp;' +  ${cEmail}"></span></div>
+        <div class="item-row"><strong>Ride Source:</strong><span th:text=" '&nbsp; ' + ${rideSource}"></span></div>
+        <div class="item-row"><strong>Ride Destination:</strong><span th:text=" '&nbsp; ' + ${rideDestination}"></span></div>
+        <div class="item-row"><strong>Ride Date:</strong><span th:text=" '&nbsp; ' + ${rideDate}"></span></div>
+        <div class="item-row"><strong>Fare:</strong><span th:text=" '&nbsp; ' + ${fare}"></span></div>
+        <div class="item-row"><strong>Car Name:</strong><span th:text="' &nbsp;' +  ${carName}"></span></div>
+        <div class="item-row"><strong>Car Number:</strong><span th:text=" '&nbsp; ' + ${carNumber}"></span></div>
+        <div class="item-row"><strong>Driver Email:</strong><span th:text=" ' &nbsp;' + ${rEmail}"></span></div>
+        <div class="item-row"><strong>Driver ID:</strong><span th:text=" '&nbsp; ' + ${rUserId}"></span></div>
+    </div>
+    <footer>
+        Thank you for your business!
+    </footer>
+</div>
+</body>
+</html>

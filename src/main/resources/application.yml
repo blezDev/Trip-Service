@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: Trip-Service
+  datasource:
+    url: jdbc:mysql://root:ufdaoJixJwsvNuKcCPCaHblieGtDmFAQ@monorail.proxy.rlwy.net:34640/railway?createDatabaseIfNotExist=true
+    username: root
+    password: ufdaoJixJwsvNuKcCPCaHblieGtDmFAQ
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect : org.hibernate.dialect.MySQLDialect
+
+    show-sql: true
+  mail:
+    port: 587
+    host: smtp.gmail.com
+    username: "gietuallinone@gmail.com"
+    password: "imdu znnk gsuy mxid"
+
+    properties:
+      "[mail.smtp.connectiontimeout]": 5000
+      "[mail.smtp.timeout]": 3000
+      "[mail.smtp.writetimeout]": 5000
+      mail :
+        smtp :
+          auth : true
+          starttls :
+            enable : true
+  eureka:
+    instance:
+      lease-renewal-interval-in-seconds: 0
+    #    hostname: auth-service-production-9d14.up.railway.app
+    #    metadata-map:
+    #      publicUrl: https://auth-service-production-9d14.up.railway.app
+    client:
+      service-url:
+        defaultZone:  http://localhost:8761/eureka
+
+
+  management:
+    endpoints:
+      web:
+        base-path: /
+        exposure:
+          include: "*"
+server:
+  port: 9095
