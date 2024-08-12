@@ -59,8 +59,8 @@ public class TripController {
     }
 
     @PostMapping("/getTripsBycid/{id}")
-    public ResponseEntity<List<TripModel>> getTripsByCId(@PathVariable String cid) {
-        ResultState<List<TripModel>> tripState = tripService.getTripsByCId(cid);
+    public ResponseEntity<List<TripModel>> getTripsByCId(@PathVariable String id) {
+        ResultState<List<TripModel>> tripState = tripService.getTripsByCId(id);
         if (tripState instanceof ResultState.Success<List<TripModel>> success) {
 
             return ResponseEntity.ok(success.getData());

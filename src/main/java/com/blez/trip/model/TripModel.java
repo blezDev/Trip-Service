@@ -31,9 +31,22 @@ public class TripModel {
     private String carNumber;
     private String r_email;
     private String r_userId;
+    private String r_name;
+    private String seatsOccupied;
 
-
-    public TripModel(String c_userId, String c_name, String c_email, String rideSource, String rideDestination, String rideDate, String fare, String carName, String carNumber, String r_email, String r_userId) {
+    public TripModel(String c_userId,
+                     String c_name,
+                     String c_email,
+                     String rideSource,
+                     String rideDestination,
+                     String rideDate,
+                     String fare,
+                     String carName,
+                     String carNumber,
+                     String r_email,
+                     String r_userId,
+                     String r_name,
+                     String seatsOccupied) {
         this.c_userId = c_userId;
         this.c_name = c_name;
         this.c_email = c_email;
@@ -45,5 +58,8 @@ public class TripModel {
         this.carNumber = carNumber;
         this.r_email = r_email;
         this.r_userId = r_userId;
+        this.seatsOccupied = seatsOccupied;
+        this.r_name = r_name;
+
     }
 }

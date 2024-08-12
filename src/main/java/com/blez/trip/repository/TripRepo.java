@@ -10,10 +10,10 @@ import java.util.List;
 
 @Repository
 public interface TripRepo extends JpaRepository<TripModel,Integer> {
-    @Query(value = "SELECT * FROM TripModel WHERE c_userId = :cUserId", nativeQuery = true)
+    @Query(value = "SELECT * FROM trip_model WHERE c_user_id = :cUserId", nativeQuery = true)
     List<TripModel> findByCUserIdNative(@Param("cUserId") String cUserId);
 
-    @Query(value = "SELECT * FROM TripModel WHERE r_userId = :rUserId", nativeQuery = true)
+    @Query(value = "SELECT * FROM trip_model WHERE r_user_id = :rUserId", nativeQuery = true)
     List<TripModel> findByRUserIdNative(@Param("rUserId") String rUserId);
 
 

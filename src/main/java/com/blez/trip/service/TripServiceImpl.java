@@ -10,9 +10,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +26,8 @@ import java.util.logging.Logger;
 @Service
 public class TripServiceImpl implements TripService {
 
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -45,6 +52,23 @@ public class TripServiceImpl implements TripService {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             TripModel savedState = tripRepo.save(tripModel);
+            String url = "http://localhost:8765/ride-service/ride/"+tripModel.getR_userId()+"/"+savedState.getSeatsOccupied();
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Content-Type", "application/json");
+
+            HttpEntity<Integer> entity = new HttpEntity<>(null, headers);
+
+            ResponseEntity<Void> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.PUT,
+                    entity,
+                    Void.class
+            );
+            if (response.getStatusCode() != HttpStatus.OK) {
+                return new ResultState.Error<>("Error while creating trip.");
+            }
+
             if (savedState == null) {
                 return new ResultState.Error<>("Error while creating trip.");
             } else {
