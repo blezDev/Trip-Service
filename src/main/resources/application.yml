@@ -34,7 +34,7 @@ spring:
     #      publicUrl: https://auth-service-production-9d14.up.railway.app
     client:
       service-url:
-        defaultZone:  http://localhost:8761/eureka
+        defaultZone:  https://eurekaregistry-production.up.railway.app/eureka
 
 
   management:
