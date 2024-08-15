@@ -1,7 +1,9 @@
 package com.blez.trip.controller;
 
+
 import com.blez.trip.model.ResponseBody;
 import com.blez.trip.model.TripModel;
+import com.blez.trip.model.CarpoolingRoute;
 import com.blez.trip.service.TripService;
 import com.blez.trip.utils.ResultState;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +85,14 @@ public class TripController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(tripState.getData());
         }
     }
+     @GetMapping("/getAllCities")
+        public ResponseEntity<List<Object>> getAllCities(){
+        ResultState<List<Object>> tripState = tripService.getAllCities();
+        if (tripState instanceof ResultState.Success<List<Object>> success) {
+            return ResponseEntity.ok(success.getData());
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(tripState.getData());
+        }
 
 }

@@ -1,7 +1,9 @@
 package com.blez.trip.service;
 
+
 import com.blez.trip.model.EmailDetails;
 import com.blez.trip.model.TripModel;
+import com.blez.trip.model.CarpoolingRoute;
 import com.blez.trip.repository.TripRepo;
 import com.blez.trip.utils.ResultState;
 import jakarta.mail.internet.MimeMessage;
@@ -156,6 +158,20 @@ public class TripServiceImpl implements TripService {
         }catch (Exception e) {
             logger.severe(e.getMessage());
             return new ResultState.Error<>("Error while getting trips.");
+        }
+    }
+
+    @Override
+    public ResultState<List<Object>> getAllCities() {
+        try {
+            List<Object> cities = tripRepo.getAllCities();
+            if (cities.size() <= 0) {
+                return new ResultState.Error<>("No cities found.");
+            }
+            return new ResultState.Success<>(cities);
+        }catch (Exception e) {
+            logger.severe(e.getMessage());
+            return new ResultState.Error<>("Error while getting cities.");
         }
     }
 }

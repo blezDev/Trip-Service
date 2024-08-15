@@ -1,6 +1,8 @@
 package com.blez.trip.repository;
 
+
 import com.blez.trip.model.TripModel;
+import com.blez.trip.model.CarpoolingRoute;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,5 +19,6 @@ public interface TripRepo extends JpaRepository<TripModel,Integer> {
     List<TripModel> findByRUserIdNative(@Param("rUserId") String rUserId);
 
 
-
+    @Query(value = "SELECT * FROM carpooling_route",nativeQuery = true)
+    List<Object> getAllCities();
 }
